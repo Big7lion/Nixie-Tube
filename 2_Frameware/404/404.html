@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Real Time Weather Widget A Flat Responsive widget Template</title>
+    <!-- For-Mobile-Apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //For-Mobile-Apps -->
+    <!-- Style -->
+    <link rel="stylesheet" href="/404/css/404style.css" type="text/css" media="all" />
+    <!-- Style -->
+    <!-- JavaScript -->
+    <script src="http://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+    <!-- Javascript -->
+
+    <script>
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML =
+                h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+        }
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i
+            }; // add zero in front of numbers < 10
+            return i;
+        }
+    </script>
+
+</head>
+
+<body onload="startTime()">
+    <h1>404 Error</h1>
+    <h2>Sorry~Please check~</h2>
+
+    <div class="container">
+
+        <div class="city">
+            JinHua, ZheJiang.
+        </div>
+
+        <div class="content">
+
+            <div class="place">
+
+                <div id="txt"></div>
+
+                <div class="dmy">
+                    <script type="text/javascript">
+                        var mydate = new Date()
+                        var year = mydate.getYear()
+                        if (year < 1000)
+                            year += 1900
+                        var day = mydate.getDay()
+                        var month = mydate.getMonth()
+                        var daym = mydate.getDate()
+                        if (daym < 10)
+                            daym = "0" + daym
+                        var dayarray = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+                        var montharray = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+                        document.write("" + dayarray[day] + ", " + montharray[month] + " " + daym + ", " + year + "")
+                    </script>
+                </div>
+
+            </div>
+
+            <div class="temp" id="weather">
+                <p id="weathercode"></p>
+                <script type="text/javascript">
+                    $.get("http://wthrcdn.etouch.cn/weather_mini?citykey=101210901", function(data) {
+                        console.log(data);
+                        var WeatherJson = JSON.parse(data);
+                        var code = WeatherJson.data.wendu + "° C"
+                        document.getElementById('weathercode').innerText = code;
+                        console.log(WeatherJson.data);
+                        console.log(WeatherJson.data.forecast[0].type);
+                        var type = WeatherJson.WeatherJson.data.forecast[0].type;
+                    });
+                </script>
+            </div>
+
+            <div class="clear"></div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>Thanks For Visiting My Website @Big7lion| From <a href="http://www.xmoban.cn">xmoban.cn</a></p>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+.div-clock {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    float: left;
+    /*position: absolute;*/
+}
+
+#clock {
+    border: 0px;
+}

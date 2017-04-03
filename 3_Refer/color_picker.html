@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Carlos-Roque.com</title>
+	 <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript">
+		var MyPicker = '';
+		$(document).ready(function(){
+			MyPicker = new ColorPicker();
+			MyPicker.Create();
+		});
+		
+		function ColorPicker(){
+			this.Strs = {
+							'1':'',
+							'X':'',
+							'Y':'',
+							'NOCANVAS':"Your Browsers doesn't support canvas"};
+			this.BoxW = 50;
+			this.BoxH = 400;
+			this.BorderW = 1;
+			this.StartColorTop = '#FFFFFF';
+			this.StartColorMiddle = '#777777';
+			this.StartColorBottom = '#000000';
+			this.DensityCanvas = 'DCnv';
+			this.ColorCanvas = 'CCnv';
+			this.DInfoPane = '<div class = "info"><label for="dy">'+this.Strs['Y']+'</label><span id="dy">-</span></div>';
+			this.CInfoPane = '<div class = "info"><label for="cy">'+this.Strs['Y']+'</label><span id="cy">-</span></div>';
+			this.NoCanvasSupport = '<div Style="color:#FF0000; text-align:center;">'+this.Strs['NOCANVAS']+'</div>';
+			this.DCanvas;
+			this.CCanvas;
+			this.DCnvCtx;
+			this.CCnvCtx;
+			
+		}
+		ColorPicker.prototype.Create = function(){
+			$('body').append('<canvas id="' + this.ColorCanvas + '" width="'+this.BoxW+'" height="'+this.BoxH+'"></canvas>');
+			$('body').append('<canvas id="' + this.DensityCanvas + '" width="'+this.BoxW+'" height="'+this.BoxH+'"></canvas>');
+			$('body').append('<div id="previewBox"><div id="prevColor"></div><input id="prevName" type="text"val=""/></div>');
+			$('body').append('<div class="oldPrevBox"><div class="oldPrevColor" id="opc1"></div><input class="oldPrevName" id="opn1" type="text"val=""/></div>');
+			$('body').append('<div class="oldPrevBox"><div class="oldPrevColor" id="opc2"></div><input class="oldPrevName" id="opn2" type="text"val=""/></div>');
+			$('body').append('<div class="oldPrevBox"><div class="oldPrevColor" id="opc3"></div><input class="oldPrevName" id="opn3" type="text"val=""/></div>');
+			
+			this.CCanvas = document.getElementById(this.ColorCanvas);
+			this.DCanvas = document.getElementById(this.DensityCanvas);
+			$('#' + this.DensityCanvas).css('border',this.BorderW + 'px solid #000');
+			$('#' + this.ColorCanvas).css('border',this.BorderW + 'px solid #000');
+			if(!this.DCanvas.getContext){
+				$('#'+this.DensityCanvas).remove();
+				$('#'+this.ColorCanvas).remove();
+				$('body').append(this.NoCanvasSupport);
+				return;
+			}
+			this.DCnvCtx =  this.DCanvas.getContext('2d'); 
+			this.CCnvCtx =  this.CCanvas.getContext('2d'); 
+			$('body').append('<div class = "clear"></div>');
+			$('body').append(this.CInfoPane);
+			$('body').append(this.DInfoPane);
+			
+			this.Initialize();
+			this.addEvents();
+		}
+		ColorPicker.prototype.Initialize = function(){
+			this.SetDensityBar(this.StartColorMiddle);
+			var CGradient = this.CCnvCtx.createLinearGradient(0,0,0,this.BoxH);
+			CGradient.addColorStop(0.01,"red");
+			CGradient.addColorStop(0.166,"yellow");
+			CGradient.addColorStop(0.332,"green");
+			CGradient.addColorStop(0.489,"skyblue");
+			CGradient.addColorStop(0.664,"blue");
+			CGradient.addColorStop(0.83,"deeppink");
+			CGradient.addColorStop(0.99,"red");
+			
+			this.CCnvCtx.fillStyle = CGradient;
+			this.CCnvCtx.fillRect(0,0,this.BoxW,this.BoxH);
+		}
+		ColorPicker.prototype.SetDensityBar = function(NewColor){
+			var DGradient = this.DCnvCtx.createLinearGradient(0,0,0,this.BoxH);
+			DGradient.addColorStop(0.01,this.StartColorTop);
+			DGradient.addColorStop(0.5,NewColor);
+			DGradient.addColorStop(0.99,this.StartColorBottom);
+			
+			this.DCnvCtx.fillStyle = DGradient;
+			this.DCnvCtx.fillRect(0,0,this.BoxW,this.BoxH);
+			
+		}
+		ColorPicker.prototype.addEvents = function(){
+			var context = this;
+			$('#'+this.DensityCanvas).on('mousemove',function(e){
+				var offset = $(this).offset();
+				var xoff = offset.left + context.BorderW;
+				var yoff = offset.top + context.BorderW;
+				var x = e.pageX - xoff;
+				var y = e.pageY - yoff;
+				var color = context.GetClickColor(context.DCnvCtx,x,y);
+				$('#dy').text(color);
+			});
+			$('#'+this.DensityCanvas).on('click',function(e){
+				var offset = $(this).offset();
+				var xoff = offset.left + context.BorderW;
+				var yoff = offset.top + context.BorderW;
+				var x = e.pageX - xoff;
+				var y = e.pageY - yoff;
+				context.UpdateColorPreview(context.DCnvCtx,x,y);
+			});
+			$('#'+this.ColorCanvas).on('mousemove',function(e){
+				var offset = $(this).offset();
+				var xoff = offset.left + context.BorderW;
+				var yoff = offset.top + context.BorderW;
+				var x = e.pageX - xoff;
+				var y = e.pageY - yoff;
+				var color = context.GetClickColor(context.CCnvCtx,x,y);
+				$('#cy').text(color);
+			});
+			$('#'+this.ColorCanvas).on('click',function(e){
+				var offset = $(this).offset();
+				var xoff = offset.left + context.BorderW;
+				var yoff = offset.top + context.BorderW;
+				var x = e.pageX - xoff;
+				var y = e.pageY - yoff;
+				context.UpdateDensityCanvas(context.CCnvCtx,x,y);
+			});
+			
+		}
+		ColorPicker.prototype.UpdateDensityCanvas = function (CnvCtx,x,y){
+			var HexColor = this.GetClickColor(CnvCtx,x,y);
+			this.SetDensityBar(HexColor);
+		}
+		ColorPicker.prototype.UpdateColorPreview = function(CnvCtx,x,y){
+			var opn = $('#prevName').val();
+			var opn1 = $('#opn1').val();
+			var opn2 = $('#opn2').val();
+			var HexColor = this.GetClickColor(CnvCtx,x,y);
+			$('#prevColor').css('background-color',HexColor);
+			$('#prevName').val(HexColor);
+			
+			$('#opc1').css('background-color',opn);
+			$('#opn1').val(opn);
+			$('#opc2').css('background-color',opn1);
+			$('#opn2').val(opn1);
+			$('#opc3').css('background-color',opn2);
+			$('#opn3').val(opn2);
+			
+		}
+		ColorPicker.prototype.GetClickColor = function (CnvCtx,x,y){
+			var point = CnvCtx.getImageData(x, y, 1, 1).data; 
+			var r = ("0" + point[0].toString(16)).substr(-2);
+			var g = ("0" + point[1].toString(16)).substr(-2);
+			var b = ("0" + point[2].toString(16)).substr(-2);
+			
+			var Hex = "#" + r + g + b;
+			return Hex;
+		}
+    </script>
+	<style type="text/css">
+		.clear{clear:both;}
+		canvas {margin: 10px 30px; cursor:pointer;float:left;}
+		.info {float:left; width:110px; text-align:center;}
+		.oldPrevBox,#previewBox{ float: left; margin: 10px 30px;text-align:center;}
+		#prevColor{ width: 100px; height: 100px; border: 4px solid #ccc; margin: 0 auto;}
+		.oldPrevColor{ width: 80px; height: 80px; border: 4px solid #ccc; margin: 0 auto;}
+		.oldPrevName,#prevName{margin-top: 10px; text-align:center;}
+	</style>
+  </head>
+  <body>
+	<h3>Canvas-Javascript Based Color Picker</h3>
+  </body>
+</html>

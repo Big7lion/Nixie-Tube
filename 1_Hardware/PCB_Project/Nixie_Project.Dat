@@ -1,0 +1,57 @@
+﻿Field=#~Integer~#~50|Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~Nixie_Project.PrjPCB|ReportField=ProjectFullPath~F:\2-stm32_Doc\5-test2learn\All_Project\10.flow_tube\1_Hardware\PCB_Project\Nixie_Project.PrjPCB|ReportField=Title~Bill of Materials For Project [Nixie_Project.PrjPCB] (No PCB Document Selected)|ReportField=TotalQuantity~131|ReportField=ReportTime~0:15:08|ReportField=ReportDate~2017/3/1|ReportField=ReportDateTime~2017/3/1 0:15:08|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~2017/3/1|ReportField=CurrentTime~0:14:39|ReportField=Date~|ReportField=DocumentFullPathAndName~F:\2-stm32_Doc\5-test2learn\All_Project\10.flow_tube\1_Hardware\PCB_Project\Nixie_Sch.SchDoc|ReportField=DocumentName~Nixie_Sch.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~2017/2/28|ReportField=Organization~|ReportField=ProjectName~Nixie_Project.PrjPCB|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~|ReportField=DataSourceFileName~Nixie_Project.PrjPCB|ReportField=DataSourceFullPath~F:\2-stm32_Doc\5-test2learn\All_Project\10.flow_tube\1_Hardware\PCB_Project\Nixie_Project.PrjPCB
+1|104|无极性贴片电容|C1, C2, C3, C4, C5, C6, C10, C11, C12, C17, C18, C19, C61, C71, C81, C102, C503|C 0805|C|17
+2|20p|无极性贴片电容|C7, C8, C9, C13, C14, C101|C 0805|C|6
+3|10u|无极性贴片电容|C15, C16, C23, C24, C25, C26|C 0805|C|6
+4|100uF/50V|贴片电解电容|C21|CM D(6.3*5.4)|C-CM|1
+5|10uF/50V|贴片电解电容|C22|CM B(4*5.4)|C-CM|1
+6|104|无极性贴片电容|C304, C305, C306, C307, C308, C309|C 1206|C|6
+7|1n|直插固态电容|C502|CS 5.0*10*13 - C|C-CS|1
+8|4.7UF/250V|直插电解电容|C504|CAP 3.5*8*11.5 - BK|C-CAP|1
+9|3.5*1.3|低压电源接口|CON1|DC-005|P-DC|1
+10|1220|微型电池|CR1|CR1220_A|CR-3V|1
+11|ZENER1|Zener Diode|D1|DO41-10|ZENER1|1
+12|BOOT|3*2P接插件|JP2|HDR-3X2|Header 3X2|1
+13|HDR-1X4|4P接插件|JP3|HDR-1X4_H|Header 4|1
+14|HDR-1X4|4P接插件|JP4, JP6|HDR-1X4|Header 4|2
+15|HDR-1X3|3P接插件|JP7|HDR-1X3|Header 3|1
+16|330UH|功率屏蔽电感|L51|CDRH73|L-CDRH|1
+17|RED|贴片LED|LED1|LED 0805R|LED-SMD|1
+18|GREEN|贴片LED|LED2|LED 0805G|LED-SMD|1
+19|W2812||LED3, LED4, LED5, LED6, LED7, LED8|W2812|W2812|6
+20|BLUE|贴片LED|LED9|LED 0805B|LED-SMD|1
+21|Nixie_Header|QS30-1|Nixie 1, Nixie 2, Nixie 3, Nixie 4, Nixie 5, Nixie 6|NIXIE_QS30-1|Nixie|6
+22|Point||Point1, Point2, Point3, Point4|HDR-1X2_M|Point|4
+23|A42|低频放大-NPN型|Q1, Q2, Q3, Q4|TO92A|9013-DIP|4
+24|IRF630|N沟场效应管|Q5|TO220B|IRF3710|1
+25|0Ω|贴片电阻|R00, R01, R02|R 0805|R|3
+26|470|贴片电阻|R0, R2, R103|R 0805|R|3
+27|10K|贴片电阻|R1, R10, R11, R12, R13, R62, R63|R 0805|R|7
+28|18|贴片电阻|R14, R15|R 0805|R|2
+29|20K|贴片电阻|R31, R32, R33, R34, R35, R36, R37, R38, R39, R40|R 1206|R|10
+30|100|贴片电阻|R51, R61|R 0805|R|2
+31|0.33|贴片电阻|R52|R 0805|R|1
+32|330|贴片电阻|R53|R 0805|R|1
+33|47K|贴片电阻|R54|R 1206|R|1
+34|100K|贴片电阻|R55|R 1206|R|1
+35|1M|贴片电阻|R56|R 1206|R|1
+36|8.2K|贴片电阻|R57|R 0805|R|1
+37|4.7K|贴片电阻|R71|R 0805|R|1
+38|240k|贴片电阻|R81|R 0805|R|1
+39|20K|贴片电阻|R301, R302, R303, R304|R 0805|R|4
+40|3x6x5|3x6轻触开关|SW1, SW2|TSW SMD-3*6*2.5|TSW 3x6|2
+41|STM32F103C8T6|32位STM单片机|U1|LQFP48|STM32F103C8T6|1
+42|PL2303|PL2303HXA|U2|SSOP28_N|PL2303|1
+43|78M05|CI-78M05|U3|TO220B|78M05|1
+44|MC34063||U5|SOP8_N|MC34063|1
+45|ESP-12||U6|ESP_12|ESP-12|1
+46|DS1302|实时时钟芯片|U7|SOP8_N|DS1302|1
+47|HV57708PG|串转并|U8|HV57708PG|HV57708PG|1
+48|TXB0108PWR|逻辑电平转换芯片|U9|TSSOP20_N|TXB0108PWR|1
+49|DS18B20|数字温度计|U10|TO92A|DS18B20|1
+50|USB-5P|微型USB母座|USB1|USB-MICRO_A|USB-5P|1
+51|AMS1117-3V3|三端稳压芯片|V1, V2|SOT-223|AMS1117|2
+52|M7|肖特基二极管|VD1|SMA|M7|1
+53|FR107|快恢复整流二极管|VD2|SMA|FR107|1
+54|8MHz|2脚晶振|X2|XTAL-49S DIP|XTAL-2|1
+55|32.768KHz|2脚晶振|X3, X4|XTAL-3X8H|XTAL-2|2
+56|12MHz|2脚晶振|X10|XTAL-49S DIP|XTAL-2|1
