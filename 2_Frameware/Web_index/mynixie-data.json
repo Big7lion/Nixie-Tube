@@ -1,25 +1,19 @@
 {
     "DATA_TIME": {
+        "TIME_UPLOAD": false,
+        "TIME_UPDATE": false,
         "MCU_TIME": "23-02-2017",
         "WEB_TIME": "04-02-2017"
     },
     "RGB_DATA": {
-        "FRONT_COLOR": "#ffffff",
-        "BACK_COLOR": "#aa45df",
-        "FRONT_RGB_COLOR": {
-            "r": 0,
-            "g": 82,
-            "b": 148
-        },
-        "BACK_RGB_COLOR": {
-            "r": 3,
-            "g": 4,
-            "b": 5
-        }
+        "LED_CONTROL": true,
+        "COLOR_FADE": false,
+        "SAME_COLOR": false,
+        "FRONT_RGB_COLOR": [255, 0, 255],
+        "BACK_RGB_COLOR": [0, 0, 0]
     },
-    "LED_CONTROL": true,
     "TEMP_DATA": {
-        "UPLOAD_SETTING": true,
+        "UPLOAD_SWITCH": true,
         "TEMP_NOW": 85,
         "TEMP_RECORD": [{
                 "TIME": "11:09",
@@ -44,9 +38,10 @@
         ]
     },
     "SERIAL_DATA": {
+        "SERIAL_SWITCH": true,
         "ESP_ID": 14591872,
-        "system": "HEX",
+        "system": "DEC",
         "SEND_DATA": "hello",
-        "RECEIVE_DATA": "I'm Serial Receiver!"
+        "RECEIVE_DATA": "I'm MCU"
     }
 }

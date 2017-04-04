@@ -7,8 +7,9 @@
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nixie Tube Terminal</title>
-
+    <link rel="icon" href="http://odfef978i.bkt.clouddn.com/lion16x16.ico" type="image/x-icon">
     <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="css/loader.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/BL-BOT.css">
     <link rel="stylesheet" href="css/Canvas clocks.css">
@@ -28,22 +29,30 @@
 </head>
 
 <body>
+    <!--Loader-->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+        <div class="load_title">Loading Nixie-Tube Terminal…</div>
+    </div>
+    <!-- /.Loader -->
+
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                <a class="navbar-brand">BIGLION</a> </div>
+                <a class="navbar-brand body-cursor">BIGLION</a> </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="https://github.com/Big7lion/Nixie-Tube/issues" target="_blank">Issue <span class="sr-only">(current)</span></a> </li>
+                    <li class="active link-cursor"><a href="https://github.com/Big7lion/Nixie-Tube/issues" target="_blank">Issue <span class="sr-only">(current)</span></a> </li>
                     <li><a href="#" data-toggle="modal" data-target="#myModal">About</a> </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li> </li>
-                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Guide to <span class="caret"></span></a>
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle  body-cursor" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Guide to <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#home1" id="check-time-href">Check Time</a> </li>
                             <li><a href="#paneTwo1" id="rgb-href">RGB Control</a> </li>
@@ -56,7 +65,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li> </li>
-                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">English <span class="caret"></span></a>
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle  body-cursor" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">English <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">English</a> </li>
                             <li><a href="Nixie_ZH.html">Chinese</a> </li>
@@ -78,7 +87,7 @@
                         <p class="text-center">This is a Terminal Web for a Nixie Tube works on MCU STM32 and SOC ESP8266</p>
                         <p class="text-center">For Diy and Learning MQTT</p>
                         <p>&nbsp;&nbsp;</p>
-                        <p class="text-center"><a class="btn btn-primary btn-lg" id="get-started">Get Started</a> </p>
+                        <p class="text-center"><a class="btn btn-primary btn-lg body-cursor" id="get-started">Get Started</a> </p>
                     </div>
                 </div>
             </div>
@@ -93,8 +102,8 @@
                 <h2 id="Start_Title" class="Page-Header">Start From Below</h2>
             </div>
             <div role="tabpanel" class="container">
-                <ul class="nav nav-tabs nav-justified nav-pills " role="tablist" id="tab-switch">
-                    <li role="presentation" class="active"><a href="#home1" data-toggle="tab" role="tab" aria-controls="tab1">Check Time</a></li>
+                <ul class="nav nav-tabs nav-justified nav-pills  body-cursor" role="tablist" id="tab-switch">
+                    <li role="presentation" class="active  body-cursor"><a href="#home1" data-toggle="tab" role="tab" aria-controls="tab1" class="body-cursor">Check Time</a></li>
                     <li role="presentation"><a href="#paneTwo1" data-toggle="tab" role="tab" aria-controls="tab2">RGB Control</a></li>
                     <li role="presentation"><a href="#paneTwo2" data-toggle="tab" role="tab" aria-controls="tab3" id="temp-href2">Read Temprature</a></li>
                     <li role="presentation"><a href="#paneTwo3" data-toggle="tab" role="tab" aria-controls="tab4">Serial Control</a></li>
@@ -121,7 +130,7 @@
                                             <label for="dtp_input1" class="text-center col-md-3 control-label center-block">DateTime Picking<br>
                     </label>
                                             <div class="input-group date form_datetime col-md-offset-3 col-md-8" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-                                                <input class="form-control" size="16" type="text" value="" readonly>
+                                                <input class="form-control" size="16" type="text" value="" id="WEB-time-box" readonly>
                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span> <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                             </div>
                                             <input type="hidden" id="dtp_input1" value="" />
@@ -150,13 +159,13 @@
                                         <input type="text" id="end-color" class="form-control demo" data-control="wheel" value="rgb(71,37,18)" data-format="rgb" data-position="top left">
                                     </div>
                                 </div>
-                                <div class="row center-block text-center"> <a href="#forward-color" class="button button-3d button-royal button-pill button-small" id="button-same-color" style="margin-right: 20px">Use a same color</a> <a href="#forward-color" class="button button-3d button-action button-pill button-small"
+                                <div class="row center-block text-center"> <a href="#forward-color" class="button button-3d button-royal button-pill button-small body-cursor" id="button-same-color" style="margin-right: 20px">Use a same color</a> <a class="button button-3d button-action button-pill button-small body-cursor"
                                         id="color-fade">Start the color fade</a> </div>
                             </div>
                             <div class="col-sm-3 col-sm-offset-1">
                                 <div class="row"> <img src="images/Light-OFF.svg" class="img-circle img-responsive center-block" style="width: 100px;height: 150px" id="light-state"></div>
                                 <div class="row text-center">
-                                    <input type="checkbox" name="LED-Switch" data-off-color="warning" data-size="small" id="LED-control">
+                                    <input type="checkbox" name="LED-Switch" data-off-color="warning" data-size="small" id="LED-control" class="body-cursor">
                                 </div>
                             </div>
                         </div>
@@ -185,19 +194,24 @@
                         <div class="container">
                             <div class="col-md-7 col-md-offset-1">
                                 <div class="row">
-                                    <textarea id="send-box" name="contact_message" style="margin-top: 30px;margin-bottom: 20px" class="submit-form-border form-control" rows="3" placeholder="SEND BOX" required></textarea>
+                                    <textarea id="send-box" name="contact_message" style="margin-top: 30px;margin-bottom: 20px" class="submit-form-border form-control text-cursor" rows="3" placeholder="SEND BOX" required></textarea>
                                 </div>
                                 <div class="row">
-                                    <textarea id="receive-box" name="contact_message" class="submit-form-border form-control" rows="6" style="margin-bottom: 20px" value="onfocus=this.blur()" onfocus="this.blur()" placeholder="RECEIVE BOX" required></textarea>
+                                    <textarea id="receive-box" name="contact_message" class="submit-form-border form-control text-cursor" rows="6" style="margin-bottom: 20px" value="onfocus=this.blur()" onfocus="this.blur()" placeholder="RECEIVE BOX" required></textarea>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="row text-center">
-                                    <div class="form-group" style="margin-top: 90px">
-                                        <button type="submit" class="button button-glow button-border button-rounded button-primary button-normal pull-right" id="send-data">serial-data send</button>
+                                    <div class="form-group" style="margin-top: 60px">
+                                        <button type="submit" class="button button-glow button-border button-rounded button-action button-normal pull-right" id="send-data">Send Serial-Data</button>
                                     </div>
                                 </div>
-                                <div class="row center-block" style="margin-top: 30px;margin-left: 30%">
+                                <div class="row center-block" style="margin-top: 20px;margin-right: 10px">
+                                    <div class="form-group">
+                                        <button type="submit" class="button button-glow button-border button-rounded button-primary button-normal pull-right" id="clear-data">Clear Box</button>
+                                    </div>
+                                </div>
+                                <div class="row center-block" style="margin-top: 20px;margin-left: 30%">
                                     <label for="dec-hex-switch" class="text-center">System</label>
                                     <input type="checkbox" name="dec-hex" data-off-color="info" data-on-color="success" data-size="normal" data-on-text="HEX" data-off-text="DEC" id="dec-hex-switch">
                                 </div>
@@ -223,8 +237,8 @@
                     <div class="form-group">
                         <input type="text" id="contact_subject" name="contact_subject" class="submit-form-border form-control" placeholder="Subject" required/>
                     </div>
-                    <div class="form-group">
-                        <textarea id="contact_message" name="contact_message" class="submit-form-border form-control" rows="6" placeholder="Message" required></textarea>
+                    <div class="form-group" id="contact_message_parent">
+                        <textarea id="contact_message" name="contact_message" class="submit-form-border form-control text-cursor" rows="6" placeholder="Message" required></textarea>
                     </div>
                     <button type="submit" class="button button-glow button-border button-rounded button-primary button-normal pull-right" id="submit-button">Submit</button>
                 </form>
@@ -240,8 +254,8 @@
             <div class="col-xs-12">
                 <hr class="divider">
                 <div class="row">
-                    <p class="col-md-3">Copyright © <a id="submit-link">Big7lion.</a></p>
-                    <p class="pull-right"><a id="top-link">Back to Top</a></p>
+                    <p class="col-md-3">Copyright © <a id="submit-link" class="scoll-cursor">Big7lion.</a></p>
+                    <p class="pull-right"><a id="top-link" class="scoll-cursor">Back to Top</a></p>
                 </div>
             </div>
         </div>
@@ -253,7 +267,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">× </button>
+                    <!--<button type="button" data-dismiss="modal" class="close body-cursor" aria-hidden="true">× </button>-->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="body-cursor">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel"> Something to say </h4>
                 </div>
                 <div class="modal-body">
@@ -262,7 +277,7 @@
                     <p class="text-center">The first Version may have some pities,I'll try to fix them in the next Version;</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close </button>
+                    <button type="button" class="btn btn-primary body-cursor" data-dismiss="modal">Close </button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -273,7 +288,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="body-cursor">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel2">Please type in the connection parameter~</h4>
                 </div>
                 <div class="modal-body">
@@ -299,8 +314,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="WS-Connect">Connect</button>
+                    <button type="button" class="btn btn-default body-cursor" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary body-cursor" id="WS-Connect">Connect</button>
                 </div>
             </div>
         </div>
@@ -369,46 +384,10 @@
             delay: 20
         });
         /*Message Box Function*/
-        $('#datatime-updata').on('click', function(e) {
-            e.preventDefault();
-            $.scojs_message('Data&time have delivered', $.scojs_message.TYPE_OK);
-        });
-        $('#datatime-upload').on('click', function(e) {
-            e.preventDefault();
-            $.scojs_message('Data&time have uploaded,please check the box', $.scojs_message.TYPE_OK);
-        });
-        $('#button-same-color').on('click', function(e) {
-            e.preventDefault();
-            // document.getElementById('end-color').value
-            $('#end-color').minicolors('value', document.getElementById('forward-color').value);
-        });
 
         $("[name='LED-Switch']").bootstrapSwitch();
         $("[name='thermometer-switch']").bootstrapSwitch();
         $("[name='dec-hex']").bootstrapSwitch();
-        $('input[name="LED-Switch"]').on('switchChange.bootstrapSwitch', function(event, state) {
-            if (false == state) {
-                $('#light-state').attr("src", "images/Light-OFF.svg");
-                $.scojs_message('Turn off the led', $.scojs_message.TYPE_ERROR);
-            } else if (true == state) {
-                $('#light-state').attr("src", "images/Light-ON.svg");
-                $.scojs_message('Turn on the led', $.scojs_message.TYPE_OK);
-            }
-        });
-        $('input[name="thermometer-switch"]').on('switchChange.bootstrapSwitch', function(event, state) {
-            if (false == state) {
-                $.scojs_message('STOP collecting temperature', $.scojs_message.TYPE_ERROR);
-            } else if (true == state) {
-                $.scojs_message('START collecting temperature', $.scojs_message.TYPE_OK);
-            }
-        });
-        $('input[name="dec-hex"]').on('switchChange.bootstrapSwitch', function(event, state) {
-            if (false == state) {
-                $.scojs_message('DEC stream ON', $.scojs_message.TYPE_OK);
-            } else if (true == state) {
-                $.scojs_message('HEX stream ON', $.scojs_message.TYPE_OK);
-            }
-        });
     </script>
 
     <!--COLOR PICKER Function-->
@@ -435,6 +414,7 @@
                     position: $(this).attr('data-position') || 'bottom left',
                     swatches: $(this).attr('data-swatches') ? $(this).attr('data-swatches').split('|') : [],
                     change: function(value, opacity) {
+                        Nixie_rgbcontrol_data.SAME_COLOR = false;
                         if (!value) return;
                         if (opacity) value += ', ' + opacity;
                         if (typeof console === 'object') {
@@ -447,42 +427,58 @@
             });
 
         });
+
+        function rgbOrRgbaToArray(colorString) {
+            var rgbOrgbaJudgeTag = /^([^\(]+)\([^\)]+\)$/i;
+            var aaa = rgbOrgbaJudgeTag.exec(colorString);
+            if (aaa !== null) {
+                if (aaa[1].trim() === "rgb") {
+                    var str = colorString;
+                    var strTag = /^rgb[a]*\s*\(([^,]+),([^,]+),([^\)]+)\)$/i;
+                    var result = strTag.exec(str);
+                    if (result === null || result[1].trim() === "" || result[2].trim() === "" || result[3].trim() === "") {
+                        return null;
+                    }
+                    var returnArray = [];
+                    for (var i = 1; i <= result.length - 1; i++) {
+                        returnArray[i - 1] = Number(result[i].trim());
+                    }
+                    return returnArray;
+                } else if (aaa[1].trim() === "rgba") {
+                    var str = colorString;
+                    var strTag = /^rgb[a]*\s*\(([^,]+),([^,]+),([^,]+),([^\)]+)\)$/i;
+                    var result = strTag.exec(str);
+                    if (result === null || result[1].trim() === "" || result[2].trim() === "" || result[3].trim() === "") {
+                        return null;
+                    }
+                    var returnArray = [];
+                    for (var i = 1; i <= result.length - 1; i++) {
+                        returnArray[i - 1] = Number(result[i].trim());
+                    }
+                    return returnArray;
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+        }
     </script>
     <script src="js/goal-thermometer.js"></script>
 
     <!--CHART Function-->
     <script>
         var ctxF = document.getElementById("myChart").getContext("2d");
-        var myChart = new Chart(ctxF, {
+        var chart_data = {
             type: 'line',
             data: {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                labels: [],
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+                    label: 'Live Tempetature curve',
+                    data: [],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255,99,132,1)',
                     borderWidth: 1
-                }, {
-                    fillColor: "rgba(151,187,205,0.5)",
-                    strokeColor: "rgba(151,187,205,1)",
-                    pointColor: "rgba(151,187,205,1)",
-                    pointStrokeColor: "#fff",
-                    data: [28, 48, 40, 19, 96, 27]
                 }]
             },
             options: {
@@ -494,7 +490,8 @@
                     }]
                 }
             }
-        });
+        };
+        var myChart = new Chart(ctxF, chart_data);
     </script>
 
     <!--SLIDE Function-->
@@ -558,10 +555,15 @@
     <!--MQTT&WEBSOCKETS Functions-->
     <script src="https://cdn.bootcss.com/paho-mqtt/1.0.2/mqttws31.min.js"></script>
     <script type="text/javascript">
-        /*config*/
-        //var host = '35.164.254.201'; // hostname or IP address
-        //var port = 9001;
-        topic = 'NIXIE-TUBE'; // topic to subscribe to
+        // topic to subscribe to
+        var topic = 'NIXIE-TUBE';
+        var topic_checkTime = 'NIXIE-TUBE-CHECK-TIME';
+        var topic_rgbcontrol = 'NIXIE-TUBE-RGB-CONTROL';
+        var topic_readtemp = 'NIXIE-TUBE-READ-TEMP';
+        var topic_serial = 'NIXIE-TUBE-SERIAL';
+
+        var ipayload = null;
+
         useTLS = false;
         var host;
         var port;
@@ -625,11 +627,18 @@
             mqtt.subscribe(topic, {
                 qos: 0
             });
-            /*            var TEXS_TEXT = 'asdaklxc';
-                        var message = new Paho.MQTT.Message(TEXS_TEXT);
-                        message.destinationName = topic;
-                        message.qos = 0;
-                        mqtt.send(message);*/
+            mqtt.subscribe(topic_checkTime, {
+                qos: 0
+            });
+            mqtt.subscribe(topic_readtemp, {
+                qos: 0
+            });
+            mqtt.subscribe(topic_rgbcontrol, {
+                qos: 0
+            });
+            mqtt.subscribe(topic_serial, {
+                qos: 0
+            });
         }
 
         function onConnectionLost(response) {
@@ -637,37 +646,12 @@
             //$.scojs_message('Connection Lost', $.scojs_message.TYPE_ERROR);
         };
 
-        var ipayload = null;
-
-        function onMessageArrived(message) {
-
-            // receive box
-            var itopic = message.destinationName;
-            if (null == ipayload) {
-                ipayload = message.payloadString + '\r\n';
-            } else {
-                ipayload = ipayload + message.payloadString + '\r\n';
-            }
-            $("#receive-box").val(ipayload);
-            $('#receive-box').animate({
-                scrollTop: $("#receive-box")[0].scrollHeight
-            }, 200);
-            console.log(itopic + ' = ' + ipayload);
-
-            // thermometer animate
-            currentAmount = parseFloat(message.payloadString);
-            if (currentAmount > goalAmount) {
-                $.scojs_message('The Temperature is too high', $.scojs_message.TYPE_ERROR);
-            } else
-                animateThermometer();
-
-            // LED switch change
-            $("input[name='LED-Switch']").bootstrapSwitch('state', false, false);
-
-            //data-time
-            $("#MCU-time-box").val(Nixie_Data.DATA_TIME.MCU_TIME);
+        function onMessageSend(topic, data_string) {
+            var message = new Paho.MQTT.Message(data_string);
+            message.destinationName = topic;
+            message.qos = 0;
+            mqtt.send(message);
         }
-
 
         $('#WS-Connect').on('click', function(e) {
             e.preventDefault();
@@ -682,21 +666,177 @@
     <script type="text/javascript">
         var currentAmount = 100.3;
         var Nixie_Data;
+        var Nixie_checktime_data;
+        var Nixie_rgbcontrol_data;
+        var Nixie_readtemp_data;
+        var Nixie_serial_data;
+        var receive_box_showstring = null;
+
         $(document).ready(function() {
             $.getJSON("http://odfef978i.bkt.clouddn.com/mynixie-data.json", function(data) {
                 Nixie_Data = data;
                 console.log(Nixie_Data);
                 console.log(Nixie_Data.DATA_TIME.MCU_TIME);
+                Nixie_checktime_data = Nixie_Data.DATA_TIME;
+                Nixie_rgbcontrol_data = Nixie_Data.RGB_DATA;
+                Nixie_readtemp_data = Nixie_Data.TEMP_DATA;
+                Nixie_serial_data = Nixie_Data.SERIAL_DATA;
             });
         });
 
-        $('#send-data').click(function() {
-            var Nixie_String = JSON.stringify(Nixie_Data);
-            var message = new Paho.MQTT.Message($("#send-box").val());
-            message.destinationName = topic;
-            message.qos = 0;
-            mqtt.send(message);
+        function onMessageArrived(message) {
+
+            visual_message_count();
+
+            var itopic = message.destinationName;
+            ipayload = JSON.parse(message.payloadString);
+
+            if (topic_serial == itopic) {
+                // receive box
+                if (ipayload.RECEIVE_DATA != null) {
+                    if (null == receive_box_showstring) {
+                        receive_box_showstring = ipayload.RECEIVE_DATA + '\r\n';
+                    } else {
+                        receive_box_showstring = receive_box_showstring + ipayload.RECEIVE_DATA + '\r\n';
+                    }
+                    $("#receive-box").val(receive_box_showstring);
+                    $('#receive-box').animate({
+                        scrollTop: $("#receive-box")[0].scrollHeight
+                    }, 200);
+                }
+            } else if (topic_readtemp == itopic) {
+                // thermometer animate
+                var state = ipayload.UPLOAD_SWITCH;
+                if (false == state) {
+                    $.scojs_message('STOP collecting temperature', $.scojs_message.TYPE_ERROR);
+                } else if (true == state) {
+                    $.scojs_message('START collecting temperature', $.scojs_message.TYPE_OK);
+                    if (ipayload.TEMP_NOW != null) {
+                        currentAmount = parseFloat(ipayload.TEMP_NOW);
+                        if (currentAmount > goalAmount) {
+                            $.scojs_message('The Temperature is too high', $.scojs_message.TYPE_ERROR);
+                        } else {
+                            animateThermometer();
+                            //chart
+                            myChart.data.datasets[0].data.push(currentAmount);
+                            var date_time = new Date();
+                            myChart.data.labels.push(date_time.getHours() + ':' + date_time.getMinutes() + ':' + date_time.getSeconds());
+                            myChart.update();
+                        }
+                    }
+                }
+            } else if (topic_rgbcontrol == itopic) {
+                // LED switch change
+                var state = ipayload.LED_CONTROL;
+                console.log('LED state is ' + state);
+                if (false == state) {
+                    $("input[name='LED-Switch']").bootstrapSwitch('state', false, false);
+                    $('#light-state').attr("src", "images/Light-OFF.svg");
+                    $.scojs_message('Turn off the led', $.scojs_message.TYPE_ERROR);
+                } else if (true == state) {
+                    $("input[name='LED-Switch']").bootstrapSwitch('state', true, true);
+                    $('#light-state').attr("src", "images/Light-ON.svg");
+                    $.scojs_message('Turn on the led', $.scojs_message.TYPE_OK);
+                }
+
+
+            } else if (topic_checkTime == itopic) {
+
+                //data-time
+                if (ipayload.TIME_UPLOAD == true) {
+                    $("#MCU-time-box").val(ipayload.MCU_TIME);
+                    console.log('MCU\'s time is ' + ipayload.MCU_TIME);
+                }
+                if (ipayload.TIME_UPDATE == true) {
+                    console.log('WEB\'s time is ' + ipayload.WEB_TIME);
+                }
+
+            } else {
+
+                console.log(itopic + ' = ' + ipayload);
+            }
+        }
+
+        // Check Time button function 
+        $('#datatime-updata').on('click', function(e) {
+            e.preventDefault();
+            var web_time = $("#WEB-time-box").val();
+            var Nixie_data_String = JSON.stringify(Nixie_checktime_data);
+            web_time = web_time.substring(0, web_time.length - 3);
+            if (web_time[1] == null) {
+                $.scojs_message('Please pick a time for updating', $.scojs_message.TYPE_ERROR);
+            } else {
+                Nixie_checktime_data.TIME_UPDATE = true;
+                Nixie_checktime_data.WEB_TIME = web_time;
+                onMessageSend(topic_checkTime, Nixie_data_String);
+                $.scojs_message('Data&time have delivered', $.scojs_message.TYPE_OK);
+            }
+
         });
+        $('#datatime-upload').on('click', function(e) {
+            e.preventDefault();
+            Nixie_checktime_data.TIME_UPLOAD = true;
+            var Nixie_data_String = JSON.stringify(Nixie_checktime_data);
+            onMessageSend(topic_checkTime, Nixie_data_String);
+            $.scojs_message('Data&time is uploading,please check the box', $.scojs_message.TYPE_OK);
+        });
+
+        // LED control switch
+        $('input[name="LED-Switch"]').on('switchChange.bootstrapSwitch', function(event, state) {
+            Nixie_rgbcontrol_data.LED_CONTROL = state;
+            var Nixie_data_String = JSON.stringify(Nixie_rgbcontrol_data);
+            onMessageSend(topic_rgbcontrol, Nixie_data_String);
+        });
+
+        $('#button-same-color').on('click', function(e) {
+            e.preventDefault();
+            Nixie_rgbcontrol_data.SAME_COLOR = true;
+            $('#end-color').minicolors('value', document.getElementById('forward-color').value);
+        });
+
+        $('#color-fade').on('click', function(e) {
+            e.preventDefault();
+            Nixie_rgbcontrol_data.COLOR_FADE = true;
+            Nixie_rgbcontrol_data.FRONT_RGB_COLOR = rgbOrRgbaToArray($('#forward-color').val());
+            Nixie_rgbcontrol_data.BACK_RGB_COLOR = rgbOrRgbaToArray($('#end-color').val());
+            Nixie_rgbcontrol_data.LED_CONTROL = null;
+            var Nixie_data_String = JSON.stringify(Nixie_rgbcontrol_data);
+            console.log(Nixie_data_String);
+            onMessageSend(topic_rgbcontrol, Nixie_data_String);
+            $.scojs_message('Starting color fade~', $.scojs_message.TYPE_OK);
+        });
+
+        // Serial button function
+        $('#send-data').click(function() {
+            Nixie_serial_data.SEND_DATA = $("#send-box").val();
+            Nixie_serial_data.RECEIVE_DATA = null;
+            var Nixie_data_String = JSON.stringify(Nixie_serial_data);
+            onMessageSend(topic_serial, Nixie_data_String);
+        });
+
+        $('#clear-data').click(function() {
+            receive_box_showstring = null;
+            $("#receive-box").val(receive_box_showstring);
+        });
+
+        $('input[name="dec-hex"]').on('switchChange.bootstrapSwitch', function(event, state) {
+            if (false == state) {
+                Nixie_serial_data.system = 'DEC';
+                $.scojs_message('DEC stream ON', $.scojs_message.TYPE_OK);
+            } else if (true == state) {
+                Nixie_serial_data.system = 'HEX';
+                $.scojs_message('HEX stream ON', $.scojs_message.TYPE_OK);
+            }
+        });
+
+
+        $('input[name="thermometer-switch"]').on('switchChange.bootstrapSwitch', function(event, state) {
+            Nixie_readtemp_data.UPLOAD_SWITCH = state;
+            var Nixie_data_String = JSON.stringify(Nixie_readtemp_data);
+            onMessageSend(topic_readtemp, Nixie_data_String);
+        });
+
+        var Nixie_String = JSON.stringify(Nixie_Data);
     </script>
 
     <!--Mail Function-->
@@ -709,6 +849,44 @@
             window.location.href = encodeURI(submit_link_href);
 
             $.scojs_message('Thanks for your idea ～(￣▽￣～)', $.scojs_message.TYPE_OK);
+        });
+    </script>
+
+    <!--Title&Loader Function-->
+    <script type="text/javascript">
+        var Message_count = 0;
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState == 'hidden') {
+                normal_title = document.title;
+                document.title = 'Terminal is working……';
+            } else {
+                document.title = normal_title;
+                Message_count = 0;
+            }
+        });
+
+        function visual_message_count() {
+            Message_count = Message_count + 1;
+            if (document.visibilityState == 'hidden') {
+                document.title = 'ha~ ' + Message_count + ' message arrived!';
+            }
+        }
+
+        // Wait for preload
+        $(window).load(function() {
+            setTimeout(function() {
+                $('body').addClass('loaded');
+                $('#loader-wrapper .load_title').remove();
+                setTimeout(function() {
+                    $("html").css("overflow-y", "auto");
+                }, 1000)
+            }, 1000);
+        });
+
+        window.addEventListener("error", function(message, url, line) {
+            $.scojs_message('Please press \'Get Started\' to connect firstly', $.scojs_message.TYPE_ERROR);
+            $("input[name='LED-Switch']").bootstrapSwitch('state', false, false);
+            $("input[name='thermometer-switch']").bootstrapSwitch('state', false, false);
         });
     </script>
 </body>

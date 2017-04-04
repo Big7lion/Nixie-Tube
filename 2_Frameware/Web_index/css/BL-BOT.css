@@ -31,7 +31,7 @@
 
 .radioclass {
     opacity: 0;
-    cursor: pointer;
+    /*cursor: pointer;*/
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
 }
@@ -46,7 +46,7 @@ form .frame input {
 }
 
 form .frame label {
-    cursor: pointer;
+    /*cursor: pointer;*/
     position: relative;
     width: 30px;
     height: 30px;
@@ -94,11 +94,63 @@ form .frame input:checked+label .fa {
 }
 
 ::-moz-selection {
-    background: #333;
+    background: orange;
     color: #eee;
 }
 
 ::-webkit-selection {
-    background: #333;
+    background: deeppink;
     color: #eee;
+}
+
+body,
+html,
+button,
+label,
+.body-cursor {
+    cursor: url('http://odfef978i.bkt.clouddn.com/Normal%20Select.cur'), auto;
+}
+
+input,
+.text-cursor {
+    cursor: url('http://odfef978i.bkt.clouddn.com/Text%20Select.cur'), text;
+}
+
+a,
+.link-cursor {
+    cursor: url('http://odfef978i.bkt.clouddn.com/link-cursor.cur'), pointer;
+}
+
+.scoll-cursor {
+    cursor: url('http://odfef978i.bkt.clouddn.com/Alternate%20Select.cur'), pointer;
+}
+
+html {
+    overflow-y: hidden;
+}
+
+#receive-box::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+}
+
+#contact_message::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 10px;
+    background-image: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.5) 75%, transparent 75%, transparent)
 }
